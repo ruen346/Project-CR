@@ -1,6 +1,7 @@
+using UnityEngine;
 using TMPro;
 
-public class CurrencyGroup : Singleton<CurrencyGroup>
+public class CurrencyGroup : MonoBehaviour
 {
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI diaText;
