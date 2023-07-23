@@ -16,6 +16,17 @@ public class DataManager : MonoSingleton<DataManager>
         dia = 0;
     }
     
+    public void GetExp(int value)
+    {
+        exp += value;
+
+        if (exp >= GetMaxExp())
+        {
+            exp -= GetMaxExp();
+            level++;
+        }
+    }
+    
     public int GetMaxExp()
     {
         return 100 + level * 20;
