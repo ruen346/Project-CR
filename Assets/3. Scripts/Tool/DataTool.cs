@@ -14,7 +14,7 @@ public class DataTool : EditorWindow
     {
         if (GUILayout.Button("Exp 50 획득"))
         {
-            DataManager.Instance.GetExp(50);
+            DataManager.Instance.SetExp(50);
         }
     }
 }

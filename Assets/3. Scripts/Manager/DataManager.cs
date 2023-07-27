@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class DataManager : MonoSingleton<DataManager>
 {
     public string userName { get; private set; }
@@ -6,25 +8,31 @@ public class DataManager : MonoSingleton<DataManager>
     public int gold { get; private set; }
     public int dia { get; private set; }
     
-    // todo : 임시 데이터 세팅
     private void Awake()
     {
-        userName = "이름은8자리까지";
-        level = 1;
-        exp = 0;
-        gold = 0;
-        dia = 0;
+        GetUserData();
+    }
+
+    private void GetUserData()
+    {
+        var jsonData = CommandManager.Instance.AddCommand("GetUserData.php");
+        var userData = JsonUtility.FromJson<UserData>(jsonData);
+
+        userName = userData.userName;
+        level = userData.level;
+        exp = userData.exp;
+        gold = userData.gold;
+        dia = userData.dia;
     }
     
-    public void GetExp(int value)
+    public void SetExp(int value)
     {
-        exp += value;
+        string data = $"{value.ToString()}";
+        var jsonData = CommandManager.Instance.AddCommand("SetExp.php", data);
+        var userData = JsonUtility.FromJson<UserData>(jsonData);
 
-        if (exp >= GetMaxExp())
-        {
-            exp -= GetMaxExp();
-            level++;
-        }
+        level = userData.level;
+        exp = userData.exp;
     }
     
     public int GetMaxExp()
