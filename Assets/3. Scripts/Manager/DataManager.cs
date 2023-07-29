@@ -5,6 +5,7 @@ public class DataManager : MonoSingleton<DataManager>
     public string userName { get; private set; }
     public int level { get; private set; }
     public int exp { get; private set; }
+    public int energy { get; private set; }
     public int gold { get; private set; }
     public int dia { get; private set; }
     
@@ -21,6 +22,7 @@ public class DataManager : MonoSingleton<DataManager>
         userName = userData.userName;
         level = userData.level;
         exp = userData.exp;
+        energy = userData.energy;
         gold = userData.gold;
         dia = userData.dia;
     }

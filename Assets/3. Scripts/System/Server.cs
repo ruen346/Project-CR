@@ -9,6 +9,7 @@ public class Server : MonoBehaviour
             userName = PlayerPrefs.GetString("userName", "모험가"),
             level = PlayerPrefs.GetInt("level", 1),
             exp = PlayerPrefs.GetInt("exp", 0),
+            energy = PlayerPrefs.GetInt("energy", 100),
             gold = PlayerPrefs.GetInt("gold", 0),
             dia = PlayerPrefs.GetInt("dia", 0),
         };
