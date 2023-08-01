@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoSingleton<MenuManager>
 {
@@ -13,5 +14,10 @@ public class MenuManager : MonoSingleton<MenuManager>
         
         var window = Instantiate(Resources.Load($"Prefab/{name}"), canvas.transform) as GameObject;
         return window;
+    }
+
+    public void MoveScene(string name)
+    {
+        SceneManager.LoadScene(name);
     }
 }
