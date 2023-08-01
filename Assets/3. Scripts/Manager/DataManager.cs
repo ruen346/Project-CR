@@ -9,6 +9,8 @@ public class DataManager : MonoSingleton<DataManager>
     public int gold { get; private set; }
     public int dia { get; private set; }
     
+    public CharacterData characterData { get; private set; }
+    
     private void Awake()
     {
         GetUserData();
@@ -25,6 +27,12 @@ public class DataManager : MonoSingleton<DataManager>
         energy = userData.energy;
         gold = userData.gold;
         dia = userData.dia;
+    }
+    
+    private void GetCharacterData()
+    {
+        var jsonData = CommandManager.Instance.AddCommand("GetCharacterData.php");
+        characterData = JsonUtility.FromJson<CharacterData>(jsonData);
     }
     
     public void SetExp(int value)

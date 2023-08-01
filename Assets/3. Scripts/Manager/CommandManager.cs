@@ -11,6 +11,7 @@ public class CommandManager : MonoSingleton<CommandManager>
         switch (command)
         {
             case "GetUserData.php": return Server.GetUserData();
+            case "GetCharacterData.php": return Server.GetCharacterData();
             case "SetExp.php": return Server.SetExp(resultList[0]);
             default: return null;
         }

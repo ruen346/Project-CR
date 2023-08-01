@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Server : MonoBehaviour
 {
+    private const int MAX_CHARACTER_COUNT = 10;
+    
     public static string GetUserData()
     {
         var userData = new UserData
@@ -17,6 +19,31 @@ public class Server : MonoBehaviour
         return JsonUtility.ToJson(userData);
     }
     
+    public static string GetCharacterData()
+    {
+        var characterData = new CharacterData();
+
+        for (int i = 1; i <= MAX_CHARACTER_COUNT; i++)
+        {
+            var data = new CharacterInfoData
+            {
+                id = i,
+                isGet = Database.IsDefaultCharacter(i),
+                name = Database.GetCharacterName(i),
+                level = PlayerPrefs.GetInt($"characterlevel_{i}", 1)
+            };
+            
+            characterData.CharacterInfoDatas.Add(data);
+        }
+        
+        return JsonUtility.ToJson(characterData);
+    }
+    
+    /// <summary>
+    /// todo : 추후 다른식으로 구현
+    /// </summary>
+    /// <param name="expValue"></param>
+    /// <returns></returns>
     public static string SetExp(string expValue)
     {
         int level = PlayerPrefs.GetInt("level", 1);
