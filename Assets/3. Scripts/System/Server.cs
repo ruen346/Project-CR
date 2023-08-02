@@ -1,9 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Server : MonoBehaviour
 {
-    private const int MAX_CHARACTER_COUNT = 10;
-    
     public static string GetUserData()
     {
         var userData = new UserData
@@ -22,20 +21,22 @@ public class Server : MonoBehaviour
     public static string GetCharacterData()
     {
         var characterData = new CharacterData();
+        var characterInfoData = new List<CharacterInfoData>();
 
-        for (int i = 1; i <= MAX_CHARACTER_COUNT; i++)
+        for (int i = 1; i <= Database.MAX_CHARACTER_COUNT; i++)
         {
             var data = new CharacterInfoData
             {
                 id = i,
-                isGet = Database.IsDefaultCharacter(i),
+                isGet = PlayerPrefs.GetInt($"characterIsGet_{i}", Database.IsDefaultCharacter(i)),
                 name = Database.GetCharacterName(i),
-                level = PlayerPrefs.GetInt($"characterlevel_{i}", 1)
+                level = PlayerPrefs.GetInt($"characterlevel_{i}", 1),
+                star = PlayerPrefs.GetInt($"characterStar_{i}", Database.IsCharacterStar(i))
             };
             
-            characterData.CharacterInfoDatas.Add(data);
+            characterInfoData.Add(data);
         }
-        
+        characterData.CharacterInfoDatas = characterInfoData;
         return JsonUtility.ToJson(characterData);
     }
     

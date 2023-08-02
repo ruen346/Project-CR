@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 
+[System.Serializable]
 public class UserData
 {
     public string userName;
@@ -11,15 +12,18 @@ public class UserData
     public int dia;
 }
 
+[System.Serializable]
 public class CharacterData
 {
     public List<CharacterInfoData> CharacterInfoDatas;
 }
 
+[System.Serializable]
 public class CharacterInfoData
 {
     public int id;
-    public bool isGet;
+    public int isGet;
     public string name;
     public int level;
+    public int star;
 }

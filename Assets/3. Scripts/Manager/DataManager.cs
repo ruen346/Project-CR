@@ -14,6 +14,7 @@ public class DataManager : MonoSingleton<DataManager>
     private void Awake()
     {
         GetUserData();
+        GetCharacterData();
     }
 
     private void GetUserData()

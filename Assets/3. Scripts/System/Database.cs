@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class Database : MonoBehaviour
 {
-    public static bool IsDefaultCharacter(int id)
+    public const int MAX_CHARACTER_COUNT = 10;
+    
+    public static int IsDefaultCharacter(int id)
     {
-        return id <= 6;
+        return id <= 6 ? 1 : 0;
     }
     
     public static string GetCharacterName(int id)
@@ -22,6 +24,28 @@ public class Database : MonoBehaviour
             case 9: return "캐릭터9";
             case 10: return "캐릭터10";
             default: return "";
+        }
+    }
+    
+    public static int IsCharacterStar(int id)
+    {
+        switch (id)
+        {
+            case 1: 
+            case 2: 
+            case 3: 
+            case 4: 
+            case 5: 
+                return 1;
+            case 6: 
+            case 7: 
+            case 8:
+                return 2;
+            case 9: 
+            case 10:
+                return 3;
+            default: 
+                return 0;
         }
     }
 }
