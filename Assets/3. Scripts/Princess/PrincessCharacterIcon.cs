@@ -2,12 +2,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterIcon : MonoBehaviour
+public class PrincessCharacterIcon : MonoBehaviour
 {
     public Image characterImage;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI starText;
-    public TextMeshProUGUI nameText;
+    public Slider hpSlider;
+    public Slider mpSlider;
 
     public void Init(CharacterInfoData data)
     {
@@ -24,14 +25,5 @@ public class CharacterIcon : MonoBehaviour
     {
         levelText.text = data.level.ToString();
         starText.text = data.star.ToString();
-        nameText.text = data.name;
-    }
-    
-    /// <summary>
-    /// 뽑은거만 보이고 눌리도록 수정 필요
-    /// </summary>
-    public void OnClickIcon()
-    {
-        
     }
 }
