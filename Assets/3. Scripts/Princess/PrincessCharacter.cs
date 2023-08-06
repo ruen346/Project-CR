@@ -12,7 +12,7 @@ public class PrincessCharacter : MonoBehaviour
         StartCoroutine(MoveStartPosition());
     }
 
-    private IEnumerator  MoveStartPosition()
+    private IEnumerator MoveStartPosition()
     {
         var runTime = 0.0f;
         var startPosition = transform.position;
