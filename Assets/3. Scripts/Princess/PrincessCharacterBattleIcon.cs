@@ -1,17 +1,19 @@
 public class PrincessCharacterBattleIcon : PrincessCharacterIcon
 {
-    private void Start()
+    private PrincessCharacter character;
+    
+    public void Init(PrincessCharacter character)
     {
-        // todo: 캐릭터 스텟으로 변경
-        hpSlider.maxValue = 1;
-        mpSlider.maxValue = 100;
+        this.character = character;
+        
+        hpSlider.maxValue = character.maxHp;
+        mpSlider.maxValue = character.maxMp;
     }
     
     private void Update()
     {
-        // todo: 캐릭터 스텟으로 변경
-        hpSlider.value = 1;
-        mpSlider.value = 0;
+        hpSlider.value = character.hp;
+        mpSlider.value = character.mp;
     }
 
     public void OnClickIcon()

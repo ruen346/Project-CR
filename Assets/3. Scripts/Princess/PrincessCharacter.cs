@@ -4,15 +4,25 @@ using UnityEngine;
 public class PrincessCharacter : MonoBehaviour
 {
     private const float MOVE_START_TIME = 1.3f;
-    
+
+    // todo: 캐릭터 스텟 가져오도록 변경 (icon init 보다 빨라야함)
+    public int hp;
+    public int mp;
+    public int maxHp;
+    public int maxMp;
     public Animator animator;
-    
-    private void Start()
+    public void Init()
     {
-        StartCoroutine(MoveStartPosition());
+        // todo: 캐릭터 정보를 가져오도록 수정
+        hp = 1000;
+        mp = 0;
+        maxHp = 1000;
+        maxMp = 100;
+        
+        StartCoroutine(DoMoveStartPosition());
     }
 
-    private IEnumerator MoveStartPosition()
+    private IEnumerator DoMoveStartPosition()
     {
         var runTime = 0.0f;
         var startPosition = transform.position;
@@ -29,5 +39,10 @@ public class PrincessCharacter : MonoBehaviour
 
         transform.position = endPosition;
         animator.SetTrigger("Arrival");
+    }
+
+    public void Hit(int damage)
+    {
+        hp -= damage;
     }
 }

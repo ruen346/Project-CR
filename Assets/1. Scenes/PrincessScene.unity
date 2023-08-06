@@ -1528,7 +1528,7 @@ RectTransform:
   - {fileID: 1745312028}
   - {fileID: 1983376502}
   m_Father: {fileID: 1759761786}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1713,6 +1713,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613731273}
   m_CullTransparentMesh: 0
+--- !u!1 &650268191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 650268193}
+  - component: {fileID: 650268192}
+  m_Layer: 0
+  m_Name: PrincessManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &650268192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650268191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfe8bb24e264c44d8abb042b920d739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &650268193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650268191}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &663557278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,6 +1864,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterObject: {fileID: 2171539220295770262, guid: f6b761c88a8af0a44a1e0fd5d34b82fd, type: 3}
+  characterIcons:
+  - {fileID: 8429487755719605915}
+  - {fileID: 1577756546}
+  - {fileID: 998790626}
+  - {fileID: 595619083}
+  - {fileID: 1958004900}
+  characters: []
 --- !u!4 &692266649
 Transform:
   m_ObjectHideFlags: 0
@@ -4422,7 +4473,7 @@ RectTransform:
   - {fileID: 1444955070}
   - {fileID: 1402669977}
   m_Father: {fileID: 1759761786}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4875,11 +4926,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8429487755719605914}
-  - {fileID: 1577756545}
-  - {fileID: 998790625}
-  - {fileID: 595619082}
   - {fileID: 1958004899}
+  - {fileID: 595619082}
+  - {fileID: 998790625}
+  - {fileID: 1577756545}
+  - {fileID: 8429487755719605914}
   m_Father: {fileID: 1241700511}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5293,7 +5344,7 @@ RectTransform:
   - {fileID: 2136414634}
   - {fileID: 1309007065}
   m_Father: {fileID: 1759761786}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6150,6 +6201,7 @@ MonoBehaviour:
   maxHp: 100000
   hp: 100000
   level: 30
+  damage: 100
   animator: {fileID: 937983883792006312}
 --- !u!1 &1125882422829800998
 GameObject:
@@ -7044,7 +7096,7 @@ RectTransform:
   - {fileID: 9034057606878929386}
   - {fileID: 8816189133121285193}
   m_Father: {fileID: 1759761786}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
