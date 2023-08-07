@@ -44,5 +44,6 @@ public class PrincessCharacter : MonoBehaviour
     public void Hit(int damage)
     {
         hp -= damage;
+        GameSystem.Instance.MakeDamage(damage, new Color32(255, 219, 0, 255), gameObject);
     }
 }
