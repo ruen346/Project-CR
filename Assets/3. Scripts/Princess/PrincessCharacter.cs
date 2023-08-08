@@ -13,6 +13,8 @@ public class PrincessCharacter : MonoBehaviour
 
     public bool isAlive = true;
     public Animator animator;
+    public SpriteRenderer sprite;
+    
     public void Init()
     {
         // todo: 캐릭터 정보를 가져오도록 수정
@@ -51,6 +53,14 @@ public class PrincessCharacter : MonoBehaviour
             animator.SetTrigger("Death");
         }
 
+        StartCoroutine(DoHitChangeColor());
         GameSystem.Instance.MakeDamage(damage, new Color32(255, 219, 0, 255), gameObject);
+    }
+
+    private IEnumerator DoHitChangeColor()
+    {
+        sprite.color = new Color(1, 0.5f, 0.5f);
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
     }
 }

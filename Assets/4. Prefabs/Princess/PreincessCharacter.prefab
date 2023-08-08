@@ -124,3 +124,4 @@ MonoBehaviour:
   maxMp: 100
   isAlive: 1
   animator: {fileID: 2171539220295770260}
+  sprite: {fileID: 2171539220295770263}
