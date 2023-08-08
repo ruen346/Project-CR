@@ -21,7 +21,7 @@ public class PrincessBoss : MonoBehaviour
     {
         var runTime = 0.0f;
         var startPosition = transform.position;
-        var endPosition = new Vector3(3.5f, 3, 0);
+        var endPosition = new Vector3(3.5f, startPosition.y, 0);
 
         while (runTime < MOVE_START_TIME)
         {

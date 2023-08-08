@@ -17,7 +17,7 @@ public class PrincessCharacterManager : Singleton<PrincessCharacterManager>
         for (int i = 0; i < CHARACTER_COUNT; i++)
         {
             var character = Instantiate(characterObject);
-            character.transform.position = new Vector3(-11 - i * 1.2f, 1f + i % 3 * 0.5f, 0);
+            character.transform.position = new Vector3(-11 - i * 1.2f, i % 3 * 0.5f, 0);
 
             var princessCharacter = character.GetComponent<PrincessCharacter>();
             princessCharacter.Init();
