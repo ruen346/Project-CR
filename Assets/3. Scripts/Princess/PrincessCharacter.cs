@@ -10,6 +10,8 @@ public class PrincessCharacter : MonoBehaviour
     public int mp;
     public int maxHp;
     public int maxMp = 100;
+
+    public bool isAlive = true;
     public Animator animator;
     public void Init()
     {
@@ -42,6 +44,13 @@ public class PrincessCharacter : MonoBehaviour
     public void Hit(int damage)
     {
         hp -= damage;
+        if (hp <= 0)
+        {
+            hp = 0;
+            isAlive = false;
+            animator.SetTrigger("Death");
+        }
+
         GameSystem.Instance.MakeDamage(damage, new Color32(255, 219, 0, 255), gameObject);
     }
 }
