@@ -31,7 +31,10 @@ public class Server : MonoBehaviour
                 isGet = PlayerPrefs.GetInt($"characterIsGet_{i}", Database.IsDefaultCharacter(i)),
                 name = Database.GetCharacterName(i),
                 level = PlayerPrefs.GetInt($"characterlevel_{i}", 1),
-                star = PlayerPrefs.GetInt($"characterStar_{i}", Database.IsCharacterStar(i))
+                star = PlayerPrefs.GetInt($"characterStar_{i}", Database.IsCharacterStar(i)),
+                damage =  Database.GetCharacterDamage(i),
+                hp =  Database.GetCharacterHp(i),
+                position =  Database.GetCharacterPosition(i)
             };
             
             characterInfoData.Add(data);

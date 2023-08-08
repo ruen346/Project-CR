@@ -9,16 +9,14 @@ public class PrincessCharacter : MonoBehaviour
     public int hp;
     public int mp;
     public int maxHp;
-    public int maxMp;
+    public int maxMp = 100;
     public Animator animator;
     public void Init()
     {
         // todo: 캐릭터 정보를 가져오도록 수정
-        hp = 1000;
-        mp = 0;
         maxHp = 1000;
-        maxMp = 100;
-        
+        hp = maxHp;
+
         StartCoroutine(DoMoveStartPosition());
     }
 
