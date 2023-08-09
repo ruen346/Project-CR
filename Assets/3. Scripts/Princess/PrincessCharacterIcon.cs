@@ -10,11 +10,15 @@ public class PrincessCharacterIcon : MonoBehaviour
     public Slider hpSlider;
     public Slider mpSlider;
 
-    private CharacterInfoData characterInfoData;
+    [HideInInspector]
+    public CharacterInfoData characterInfoData;
+    [HideInInspector]
+    public bool isSetData;
 
     public void Init(CharacterInfoData data)
     {
         characterInfoData = data;
+        isSetData = true;
         
         SetImage();
         SetText();
@@ -27,7 +31,7 @@ public class PrincessCharacterIcon : MonoBehaviour
 
     private void SetText()
     {
-        levelText.text = characterInfoData.level.ToString();
+        levelText.text = $"Lv.{characterInfoData.level.ToString()}";
         starText.text = characterInfoData.star.ToString();
     }
 }
