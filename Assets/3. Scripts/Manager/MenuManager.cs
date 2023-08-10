@@ -16,6 +16,14 @@ public class MenuManager : MonoSingleton<MenuManager>
         return window;
     }
 
+    public GameObject OpenMessageWindow(string title, string content)
+    {
+        var window = OpenWindow("MessageWindow");
+        window.GetComponent<MessageWindow>().Init(title, content);
+
+        return window;
+    }
+
     public void MoveScene(string name)
     {
         SceneManager.LoadScene(name);
