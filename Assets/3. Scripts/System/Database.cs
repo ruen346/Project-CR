@@ -106,15 +106,16 @@ public class Database : MonoBehaviour
             case 1: 
             case 2: 
             case 3: 
-            case 4: 
-            case 5: 
                 return 0;
+            case 4: 
+            case 5:
             case 6: 
             case 7: 
             case 8:
+                return 1;
             case 9: 
             case 10:
-                return 1;
+                return 2;
             default: 
                 return 0;
         }

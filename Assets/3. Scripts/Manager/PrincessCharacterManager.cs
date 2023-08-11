@@ -13,7 +13,6 @@ public class PrincessCharacterManager : Singleton<PrincessCharacterManager>
     
     private void Start()
     {
-        // todo: 추후 포지션 값별 배치
         for (int i = 0; i < CHARACTER_COUNT; i++)
         {
             var character = Instantiate(characterObject);

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameSystem : MonoBehaviour
@@ -29,7 +30,7 @@ public class GameSystem : MonoBehaviour
 
     public void SetPrincessCharacter(List<CharacterInfoData> datas)
     {
-        characterInfoDatas = datas;
+        characterInfoDatas = datas.OrderBy(data => data.position).ToList();
         MenuManager.Instance.MoveScene("PrincessScene");
     }
 }

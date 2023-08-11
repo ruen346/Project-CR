@@ -4,6 +4,8 @@ using UnityEngine;
 public class PrincessCharacter : MonoBehaviour
 {
     private const float MOVE_START_TIME = 1.3f;
+    private const int FRONT_CHARACTER_POSITION = 12;
+    private const int BACK_CHARACTER_POSITION = 10;
     
     public int hp;
     public int mp;
@@ -13,9 +15,13 @@ public class PrincessCharacter : MonoBehaviour
     public bool isAlive = true;
     public Animator animator;
     public SpriteRenderer sprite;
+
+    private CharacterInfoData characterData;
     
     public void Init(CharacterInfoData data)
     {
+        characterData = data;
+        
         maxHp = data.hp;
         hp = maxHp;
 
@@ -26,7 +32,7 @@ public class PrincessCharacter : MonoBehaviour
     {
         var runTime = 0.0f;
         var startPosition = transform.position;
-        var endPosition = new Vector3(transform.position.x + 11, transform.position.y, 0);
+        var endPosition = GetEndPosition();
 
         while (runTime < MOVE_START_TIME)
         {
@@ -39,6 +45,13 @@ public class PrincessCharacter : MonoBehaviour
 
         transform.position = endPosition;
         animator.SetTrigger("Arrival");
+    }
+
+    private Vector3 GetEndPosition()
+    {
+        return new(
+            transform.position.x + (characterData.position == 0 ? FRONT_CHARACTER_POSITION : BACK_CHARACTER_POSITION),
+            transform.position.y, 0);
     }
 
     public void Hit(int damage)
