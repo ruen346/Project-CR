@@ -28,6 +28,6 @@ public class Damage : MonoBehaviour
             yield return null;
         }
 
-        Destroy(this);
+        Destroy(gameObject);
     }
 }
