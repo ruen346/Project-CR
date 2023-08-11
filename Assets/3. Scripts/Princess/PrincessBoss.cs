@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PrincessBoss : MonoBehaviour
+public class PrincessBoss : Singleton<PrincessBoss>
 {
     private const float MOVE_START_TIME = 1.3f;
     
@@ -11,7 +11,8 @@ public class PrincessBoss : MonoBehaviour
     public int damage = 100;
 
     public Animator animator;
-    
+    public SpriteRenderer sprite;
+
     private void Start()
     {
         StartCoroutine(DoMoveStartPosition());
@@ -59,5 +60,25 @@ public class PrincessBoss : MonoBehaviour
 
             yield return wait;
         }
+    }
+    
+    public void Hit(int damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            // todo : 사망 처리 추가
+        }
+
+        StartCoroutine(DoHitChangeColor());
+        var damagePosition = new Vector3(transform.position.x + 3, transform.position.y, 0);
+        GameSystem.Instance.MakeDamage(damage, new Color32(0, 200, 255, 255), gameObject, damagePosition);
+    }
+
+    private IEnumerator DoHitChangeColor()
+    {
+        sprite.color = new Color(1, 0.5f, 0.5f);
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
     }
 }

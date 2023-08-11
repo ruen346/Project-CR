@@ -19,7 +19,7 @@ public class PrincessCharacterManager : Singleton<PrincessCharacterManager>
             character.transform.position = new Vector3(-11 - i * 1.2f, i % 3 * 0.5f, 0);
 
             var princessCharacter = character.GetComponent<PrincessCharacter>();
-            princessCharacter.Init(GameSystem.Instance.characterInfoDatas[i]);
+            princessCharacter.Init(GameSystem.Instance.characterInfoDatas[i], i);
             characters.Add(princessCharacter);
             characterIcons[i].Init(GameSystem.Instance.characterInfoDatas[i]);
             characterIcons[i].InitSlider(princessCharacter);

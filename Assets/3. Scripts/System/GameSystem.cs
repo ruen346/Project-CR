@@ -18,10 +18,10 @@ public class GameSystem : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void MakeDamage(int value, Color32 color, GameObject target)
+    public void MakeDamage(int value, Color32 color, GameObject target, Vector3 viewPosition)
     {
         var ob = Instantiate(damageObject, target.transform.parent);
-        var position = target.transform.position;
+        var position = viewPosition;
         ob.transform.position = new Vector3(position.x, position.y, -1);
         
         var damage = ob.GetComponent<Damage>();

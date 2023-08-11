@@ -17,10 +17,12 @@ public class PrincessCharacter : MonoBehaviour
     public SpriteRenderer sprite;
 
     private CharacterInfoData characterData;
+    private int sequence; // 앞에서 부터 0~4
     
-    public void Init(CharacterInfoData data)
+    public void Init(CharacterInfoData data, int count)
     {
         characterData = data;
+        sequence = count;
         
         maxHp = data.hp;
         hp = maxHp;
@@ -45,6 +47,7 @@ public class PrincessCharacter : MonoBehaviour
 
         transform.position = endPosition;
         animator.SetTrigger("Arrival");
+        StartCoroutine(DoBehavior());
     }
 
     private Vector3 GetEndPosition()
@@ -52,6 +55,32 @@ public class PrincessCharacter : MonoBehaviour
         return new(
             transform.position.x + (characterData.position == 0 ? FRONT_CHARACTER_POSITION : BACK_CHARACTER_POSITION),
             transform.position.y, 0);
+    }
+    
+    private IEnumerator DoBehavior()
+    {
+        var wait = new WaitForSeconds(1.8f);
+        var attackDelay = new WaitForSeconds(0.5f);
+
+        yield return new WaitForSeconds(GetBehaviorDelay());
+        
+        while (true)
+        {
+            animator.SetTrigger("Attack");
+            yield return attackDelay;
+            PrincessBoss.Instance.Hit(characterData.damage);
+
+            yield return wait;
+        }
+    }
+
+    /// <summary>
+    /// 편성 위치에 따른 첫 행동 딜레이
+    /// </summary>
+    /// <returns>딜레이 시간</returns>
+    private float GetBehaviorDelay()
+    {
+        return sequence * 0.2f;
     }
 
     public void Hit(int damage)
@@ -65,7 +94,7 @@ public class PrincessCharacter : MonoBehaviour
         }
 
         StartCoroutine(DoHitChangeColor());
-        GameSystem.Instance.MakeDamage(damage, new Color32(255, 219, 0, 255), gameObject);
+        GameSystem.Instance.MakeDamage(damage, new Color32(255, 219, 0, 255), gameObject, transform.position);
     }
 
     private IEnumerator DoHitChangeColor()
