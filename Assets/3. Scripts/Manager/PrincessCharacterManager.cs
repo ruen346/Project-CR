@@ -13,16 +13,17 @@ public class PrincessCharacterManager : Singleton<PrincessCharacterManager>
     
     private void Start()
     {
-        // todo: 추후 게임 시작시 받아오는 형식으로 변경 
+        // todo: 추후 포지션 값별 배치
         for (int i = 0; i < CHARACTER_COUNT; i++)
         {
             var character = Instantiate(characterObject);
             character.transform.position = new Vector3(-11 - i * 1.2f, i % 3 * 0.5f, 0);
 
             var princessCharacter = character.GetComponent<PrincessCharacter>();
-            princessCharacter.Init();
+            princessCharacter.Init(GameSystem.Instance.characterInfoDatas[i]);
             characters.Add(princessCharacter);
-            characterIcons[i].Init(princessCharacter);
+            characterIcons[i].Init(GameSystem.Instance.characterInfoDatas[i]);
+            characterIcons[i].InitSlider(princessCharacter);
         }
     }
 }

@@ -1,8 +1,21 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class GameSystem : MonoSingleton<GameSystem>
+public class GameSystem : MonoBehaviour
 {
+    public static GameSystem Instance;
+    
     public GameObject damageObject;
+
+    [HideInInspector] 
+    public List<CharacterInfoData> characterInfoDatas;
+
+    private void Awake()
+    {
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     public void MakeDamage(int value, Color32 color, GameObject target)
     {
@@ -12,5 +25,11 @@ public class GameSystem : MonoSingleton<GameSystem>
         
         var damage = ob.GetComponent<Damage>();
         damage.Init(value, color);
+    }
+
+    public void SetPrincessCharacter(List<CharacterInfoData> datas)
+    {
+        characterInfoDatas = datas;
+        MenuManager.Instance.MoveScene("PrincessScene");
     }
 }

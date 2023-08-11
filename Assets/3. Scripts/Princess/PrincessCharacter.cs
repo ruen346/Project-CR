@@ -4,8 +4,7 @@ using UnityEngine;
 public class PrincessCharacter : MonoBehaviour
 {
     private const float MOVE_START_TIME = 1.3f;
-
-    // todo: 캐릭터 스텟 가져오도록 변경 (icon init 보다 빨라야함)
+    
     public int hp;
     public int mp;
     public int maxHp;
@@ -15,10 +14,9 @@ public class PrincessCharacter : MonoBehaviour
     public Animator animator;
     public SpriteRenderer sprite;
     
-    public void Init()
+    public void Init(CharacterInfoData data)
     {
-        // todo: 캐릭터 정보를 가져오도록 수정
-        maxHp = 1000;
+        maxHp = data.hp;
         hp = maxHp;
 
         StartCoroutine(DoMoveStartPosition());

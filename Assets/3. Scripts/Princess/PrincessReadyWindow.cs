@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PrincessReadyWindow : BaseWindow
@@ -32,7 +33,8 @@ public class PrincessReadyWindow : BaseWindow
     {
         if (IsAllCharacterSetting())
         {
-            MenuManager.Instance.MoveScene("PrincessScene");
+            var characters = readyCharacterIcons.Select(character => character.characterInfoData).ToList();
+            GameSystem.Instance.SetPrincessCharacter(characters);
         }
         else
         {

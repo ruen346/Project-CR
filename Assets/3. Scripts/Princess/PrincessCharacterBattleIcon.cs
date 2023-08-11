@@ -2,7 +2,7 @@ public class PrincessCharacterBattleIcon : PrincessCharacterIcon
 {
     private PrincessCharacter character;
     
-    public void Init(PrincessCharacter character)
+    public void InitSlider(PrincessCharacter character)
     {
         this.character = character;
         
