@@ -18,6 +18,11 @@ public class PrincessReadyWindow : BaseWindow
     {
         foreach (var data in DataManager.Instance.characterData.CharacterInfoDatas)
         {
+            if (!data.isGet)
+            {
+                break;
+            }
+            
             var character = Instantiate(characterIcon, viewport.transform);
             character.GetComponent<PrincessCharacterReadyIcon>().Init(data);
         }

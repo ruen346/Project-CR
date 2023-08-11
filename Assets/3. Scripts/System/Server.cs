@@ -28,7 +28,7 @@ public class Server : MonoBehaviour
             var data = new CharacterInfoData
             {
                 id = i,
-                isGet = PlayerPrefs.GetInt($"characterIsGet_{i}", Database.IsDefaultCharacter(i)),
+                isGet = PlayerPrefs.GetInt($"characterIsGet_{i}", Database.IsDefaultCharacter(i)) == 1,
                 name = Database.GetCharacterName(i),
                 level = PlayerPrefs.GetInt($"characterlevel_{i}", 1),
                 star = PlayerPrefs.GetInt($"characterStar_{i}", Database.IsCharacterStar(i)),

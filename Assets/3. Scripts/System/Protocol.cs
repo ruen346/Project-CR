@@ -22,7 +22,7 @@ public class CharacterData
 public class CharacterInfoData
 {
     public int id;
-    public int isGet;
+    public bool isGet;
     public string name;
     public int level;
     public int star;
