@@ -18,6 +18,7 @@ public class PrincessCharacter : MonoBehaviour
 
     private CharacterInfoData characterData;
     private int sequence; // 앞에서 부터 0~4
+    private bool isSkill;
     
     public void Init(CharacterInfoData data, int count)
     {
@@ -61,6 +62,7 @@ public class PrincessCharacter : MonoBehaviour
     {
         var wait = new WaitForSeconds(1.8f);
         var attackDelay = new WaitForSeconds(0.5f);
+        var isNotSkill = new WaitUntil(() => !isSkill);
 
         yield return new WaitForSeconds(GetBehaviorDelay());
         
@@ -68,8 +70,10 @@ public class PrincessCharacter : MonoBehaviour
         {
             animator.SetTrigger("Attack");
             yield return attackDelay;
+            mp += 10;
             PrincessBoss.Instance.Hit(characterData.damage);
 
+            yield return isNotSkill;
             yield return wait;
         }
     }
@@ -83,9 +87,53 @@ public class PrincessCharacter : MonoBehaviour
         return sequence * 0.3f;
     }
 
+    public void OnSkill()
+    {
+        if (mp >= maxMp && PrincessManager.Instance.isPlay && isAlive)
+        {
+            mp = 0;
+            StartCoroutine(DoSkill());
+        }
+    }
+    
+    private IEnumerator DoSkill()
+    {
+        var runTime = 0.0f;
+        var isAction = false;
+        var startPosition = transform.position;
+        var endPosition = new Vector3(PrincessBoss.Instance.transform.position.x, transform.position.y, 0);
+        
+        isSkill = true;
+        animator.SetTrigger("Skill");
+
+        while (runTime < 0.75f)
+        {
+            if (runTime < 0.15f)
+            {
+                transform.position = Vector3.Lerp(startPosition, endPosition, runTime / 0.15f);
+            }
+            else if(runTime < 0.6f && !isAction)
+            {
+                PrincessBoss.Instance.Hit(characterData.damage * 3);
+                isAction = true;
+            }
+            else
+            {
+                transform.position = Vector3.Lerp(endPosition, startPosition, (runTime - 0.6f) / 0.15f);
+            }
+            
+            runTime += Time.deltaTime;
+            yield return null;
+        }
+        
+        isSkill = false;
+    }
+
     public void Hit(int damage)
     {
         hp -= damage;
+        mp += 100;
+        
         if (hp <= 0)
         {
             hp = 0;

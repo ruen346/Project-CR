@@ -18,6 +18,6 @@ public class PrincessCharacterBattleIcon : PrincessCharacterIcon
 
     public void OnClickIcon()
     {
-        
+        character.OnSkill();
     }
 }
