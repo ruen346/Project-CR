@@ -4,21 +4,26 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoSingleton<MenuManager>
 {
     private GameObject canvas;
+    private GameObject topCanvas;
 
-    public GameObject OpenWindow(string name)
+    public GameObject OpenWindow(string name, bool isTopCanvas = false)
     {
         if (canvas == null)
         {
             canvas = GameObject.Find("Canvas");
         }
+        if (topCanvas == null)
+        {
+            topCanvas = GameObject.Find("TopCanvas");
+        }
         
-        var window = Instantiate(Resources.Load($"Prefab/{name}"), canvas.transform) as GameObject;
+        var window = Instantiate(Resources.Load($"Prefab/{name}"), isTopCanvas ? topCanvas.transform : canvas.transform) as GameObject;
         return window;
     }
 
-    public GameObject OpenMessageWindow(string title, string content)
+    public GameObject OpenMessageWindow(string title, string content, bool isTopCanvas = false)
     {
-        var window = OpenWindow("MessageWindow");
+        var window = OpenWindow("MessageWindow", isTopCanvas);
         window.GetComponent<MessageWindow>().Init(title, content);
 
         return window;

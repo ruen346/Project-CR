@@ -38,7 +38,7 @@ public class PrincessReadyWindow : BaseWindow
         }
         else
         {
-            MenuManager.Instance.OpenMessageWindow("편성 오류", "5명의 캐릭터가 모두 편성되지 않았습니다.");
+            MenuManager.Instance.OpenMessageWindow("편성 오류", "5명의 캐릭터가 모두 편성되지 않았습니다.", true);
         }
     }
 

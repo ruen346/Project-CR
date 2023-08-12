@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageObject: {fileID: 632974447613161311, guid: add9667f95b6bcf4390fbc171f6be0ee, type: 3}
+  characterInfoDatas: []
 --- !u!1 &130745296
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +565,7 @@ GameObject:
   - component: {fileID: 401057858}
   - component: {fileID: 401057857}
   m_Layer: 5
-  m_Name: CurrencyCanvas
+  m_Name: TopCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
