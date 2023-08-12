@@ -14,9 +14,11 @@ public class PrincessBoss : Singleton<PrincessBoss>
     public Animator animator;
     public SpriteRenderer sprite;
     public Slider hpSlider;
+    public GameObject skillObject;
 
     private void Start()
     {
+        SetSlider();
         StartCoroutine(DoMoveStartPosition());
     }
 
@@ -54,20 +56,40 @@ public class PrincessBoss : Singleton<PrincessBoss>
         
         while (PrincessManager.Instance.isPlay)
         {
-            if (attackCount < 10)
+            if (attackCount < 4)
             {
                 animator.SetTrigger("Attack");
                 yield return attackDelay;
-                PrincessManager.Instance.BossAttack(damage);
+                PrincessManager.Instance.BossAttack(damage, 1);
+
+                attackCount++;
             }
             else
             {
-                // todo : 스킬 발동
+                animator.SetTrigger("Skill");
+                yield return attackDelay;
+                StartCoroutine(Skill());
+                
                 attackCount = 0;
             }
 
             yield return wait;
         }
+    }
+
+    private IEnumerator Skill()
+    {
+        var characters = PrincessManager.Instance.GetTargetCharacter(3);
+        
+        foreach (var character in characters)
+        {
+            var skill = Instantiate(skillObject, character.transform.parent);
+            skill.transform.position = new Vector3(character.transform.position.x, character.transform.position.y + 1.7f, 0);
+        }
+        
+        yield return new WaitForSeconds(1f);
+        
+        PrincessManager.Instance.BossAttack(damage * 2, 3);
     }
     
     public void Hit(int damage)

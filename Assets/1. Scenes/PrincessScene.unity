@@ -6246,6 +6246,7 @@ MonoBehaviour:
   animator: {fileID: 937983883792006312}
   sprite: {fileID: 937983883792006315}
   hpSlider: {fileID: 2450363404197330609}
+  skillObject: {fileID: 2904290526130600482, guid: 47fad13ca94437943817f13f93973107, type: 3}
 --- !u!1 &1125882422829800998
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,24 +1,42 @@
+using System.Collections.Generic;
+
 public class PrincessManager : Singleton<PrincessManager>
 {
     public bool isPlay = true;
     
-    public void BossAttack(int damage)
+    public void BossAttack(int damage, int targetCount)
     {
-        TargetCharacter().Hit(damage);
+        var characters = GetTargetCharacter(targetCount);
+
+        if (characters.Count > 0)
+        {
+            foreach (var character in characters)
+            {
+                character.Hit(damage);
+            }
+        }
     }
 
-    private PrincessCharacter TargetCharacter()
+    public List<PrincessCharacter> GetTargetCharacter(int targetCount)
     {
+        var characters = new List<PrincessCharacter>();
+        int count = 0;
+        
         foreach (var character in PrincessCharacterManager.Instance.characters)
         {
             if (character.isAlive)
             {
-                return character;
+                characters.Add(character);
+                count++;
+
+                if (count == targetCount)
+                {
+                    break;
+                }
             }
         }
-
-        // todo : 패배 처리 추가
-        return null;
+        
+        return characters;
     }
 
     public void ClearStage()
