@@ -64,13 +64,13 @@ public class Database : MonoBehaviour
             case 3: 
             case 4: 
             case 5: 
-                return 10;
+                return 1000;
             case 6: 
             case 7: 
             case 8:
             case 9: 
             case 10:
-                return 9;
+                return 900;
             default: 
                 return 0;
         }

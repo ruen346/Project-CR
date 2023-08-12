@@ -64,7 +64,7 @@ public class PrincessCharacter : MonoBehaviour
 
         yield return new WaitForSeconds(GetBehaviorDelay());
         
-        while (true)
+        while (PrincessManager.Instance.isPlay)
         {
             animator.SetTrigger("Attack");
             yield return attackDelay;
@@ -80,7 +80,7 @@ public class PrincessCharacter : MonoBehaviour
     /// <returns>딜레이 시간</returns>
     private float GetBehaviorDelay()
     {
-        return sequence * 0.2f;
+        return sequence * 0.3f;
     }
 
     public void Hit(int damage)
@@ -91,6 +91,11 @@ public class PrincessCharacter : MonoBehaviour
             hp = 0;
             isAlive = false;
             animator.SetTrigger("Death");
+
+            if (PrincessCharacterManager.Instance.IsAllCharacterDeath())
+            {
+                PrincessManager.Instance.FailStage();
+            }
         }
 
         StartCoroutine(DoHitChangeColor());

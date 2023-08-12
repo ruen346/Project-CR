@@ -1752,6 +1752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebfe8bb24e264c44d8abb042b920d739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlay: 1
 --- !u!4 &650268193
 Transform:
   m_ObjectHideFlags: 0
@@ -6244,6 +6245,7 @@ MonoBehaviour:
   damage: 100
   animator: {fileID: 937983883792006312}
   sprite: {fileID: 937983883792006315}
+  hpSlider: {fileID: 2450363404197330609}
 --- !u!1 &1125882422829800998
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,7 @@
 public class PrincessManager : Singleton<PrincessManager>
 {
+    public bool isPlay = true;
+    
     public void BossAttack(int damage)
     {
         TargetCharacter().Hit(damage);
@@ -17,5 +19,17 @@ public class PrincessManager : Singleton<PrincessManager>
 
         // todo : 패배 처리 추가
         return null;
+    }
+
+    public void ClearStage()
+    {
+        isPlay = false;
+        // todo : 결과창 출력
+    }
+
+    public void FailStage()
+    {
+        isPlay = false;
+        // todo : 결과창 출력
     }
 }

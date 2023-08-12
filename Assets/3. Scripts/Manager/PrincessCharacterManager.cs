@@ -25,4 +25,17 @@ public class PrincessCharacterManager : Singleton<PrincessCharacterManager>
             characterIcons[i].InitSlider(princessCharacter);
         }
     }
+
+    public bool IsAllCharacterDeath()
+    {
+        foreach (var character in characters)
+        {
+            if (character.isAlive)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

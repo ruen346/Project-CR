@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PrincessBoss : Singleton<PrincessBoss>
 {
@@ -12,10 +13,17 @@ public class PrincessBoss : Singleton<PrincessBoss>
 
     public Animator animator;
     public SpriteRenderer sprite;
+    public Slider hpSlider;
 
     private void Start()
     {
         StartCoroutine(DoMoveStartPosition());
+    }
+
+    private void SetSlider()
+    {
+        hpSlider.maxValue = maxHp;
+        hpSlider.value = hp;
     }
 
     private IEnumerator DoMoveStartPosition()
@@ -44,7 +52,7 @@ public class PrincessBoss : Singleton<PrincessBoss>
         var wait = new WaitForSeconds(2f);
         var attackDelay = new WaitForSeconds(0.5f);
         
-        while (true)
+        while (PrincessManager.Instance.isPlay)
         {
             if (attackCount < 10)
             {
@@ -67,8 +75,11 @@ public class PrincessBoss : Singleton<PrincessBoss>
         hp -= damage;
         if (hp <= 0)
         {
-            // todo : 사망 처리 추가
+            hp = 0;
+            animator.SetTrigger("Death");
+            PrincessManager.Instance.ClearStage();
         }
+        hpSlider.value = hp;
 
         StartCoroutine(DoHitChangeColor());
         var damagePosition = new Vector3(transform.position.x + 3, transform.position.y, 0);
