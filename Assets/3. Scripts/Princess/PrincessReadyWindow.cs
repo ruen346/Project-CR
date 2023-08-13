@@ -7,7 +7,7 @@ public class PrincessReadyWindow : BaseWindow
     public static PrincessReadyWindow Instance;
     
     public GameObject characterIcon;
-    public GameObject viewport;
+    public GameObject iconContent;
     public List<PrincessCharacterIcon> readyCharacterIcons;
 
     private void Awake()
@@ -24,7 +24,10 @@ public class PrincessReadyWindow : BaseWindow
                 break;
             }
             
-            var character = Instantiate(characterIcon, viewport.transform);
+            var character = Instantiate(characterIcon, iconContent.transform);
+            character.GetComponent<PrincessCharacterReadyIcon>().Init(data);
+            
+            character = Instantiate(characterIcon, iconContent.transform);
             character.GetComponent<PrincessCharacterReadyIcon>().Init(data);
         }
     }
