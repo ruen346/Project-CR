@@ -66,7 +66,7 @@ public class PrincessCharacter : MonoBehaviour
 
         yield return new WaitForSeconds(GetBehaviorDelay());
         
-        while (PrincessManager.Instance.isPlay)
+        while (PrincessManager.Instance.isPlay && isAlive)
         {
             animator.SetTrigger("Attack");
             yield return attackDelay;
@@ -106,7 +106,7 @@ public class PrincessCharacter : MonoBehaviour
         isSkill = true;
         animator.SetTrigger("Skill");
 
-        while (runTime < 0.1f)
+        while (runTime < 1f)
         {
             if (runTime < 0.15f)
             {
