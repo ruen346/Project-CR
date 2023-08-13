@@ -106,20 +106,20 @@ public class PrincessCharacter : MonoBehaviour
         isSkill = true;
         animator.SetTrigger("Skill");
 
-        while (runTime < 0.75f)
+        while (runTime < 0.1f)
         {
             if (runTime < 0.15f)
             {
                 transform.position = Vector3.Lerp(startPosition, endPosition, runTime / 0.15f);
             }
-            else if(runTime < 0.6f && !isAction)
+            else if(runTime < 0.8f && !isAction)
             {
                 PrincessBoss.Instance.Hit(characterData.damage * 3);
                 isAction = true;
             }
             else
             {
-                transform.position = Vector3.Lerp(endPosition, startPosition, (runTime - 0.6f) / 0.15f);
+                transform.position = Vector3.Lerp(endPosition, startPosition, (runTime - 0.8f) / 0.2f);
             }
             
             runTime += Time.deltaTime;
@@ -132,7 +132,7 @@ public class PrincessCharacter : MonoBehaviour
     public void Hit(int damage)
     {
         hp -= damage;
-        mp += 100;
+        mp += 15;
         
         if (hp <= 0)
         {
