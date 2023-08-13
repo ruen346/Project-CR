@@ -26,9 +26,6 @@ public class PrincessReadyWindow : BaseWindow
             
             var character = Instantiate(characterIcon, iconContent.transform);
             character.GetComponent<PrincessCharacterReadyIcon>().Init(data);
-            
-            character = Instantiate(characterIcon, iconContent.transform);
-            character.GetComponent<PrincessCharacterReadyIcon>().Init(data);
         }
     }
 
