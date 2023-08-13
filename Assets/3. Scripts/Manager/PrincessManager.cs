@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class PrincessManager : Singleton<PrincessManager>
 {
@@ -42,7 +44,14 @@ public class PrincessManager : Singleton<PrincessManager>
     public void ClearStage()
     {
         isPlay = false;
-        // todo : 결과창 출력
+        StartCoroutine(OpenClearWindow());
+    }
+
+    private IEnumerator OpenClearWindow()
+    {
+        yield return new WaitForSeconds(3f);
+        
+        MenuManager.Instance.OpenWindow("PrincessClearWindow");
     }
 
     public void FailStage()

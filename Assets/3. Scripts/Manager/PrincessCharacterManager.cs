@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PrincessCharacterManager : Singleton<PrincessCharacterManager>
@@ -37,5 +38,10 @@ public class PrincessCharacterManager : Singleton<PrincessCharacterManager>
         }
 
         return true;
+    }
+
+    public int GetAliveCount()
+    {
+        return characters.Count(character => character.isAlive);
     }
 }
