@@ -43,21 +43,17 @@ public class Server : MonoBehaviour
         return JsonUtility.ToJson(characterData);
     }
     
-    /// <summary>
-    /// todo : 추후 다른식으로 구현
-    /// </summary>
-    /// <param name="expValue"></param>
-    /// <returns></returns>
     public static string SetExp(string expValue)
     {
         int level = PlayerPrefs.GetInt("level", 1);
         int exp = PlayerPrefs.GetInt("exp", 0);
+        int maxExp = Database.GetMaxExp(level);
         
         exp += int.Parse(expValue);
 
-        if (exp >= DataManager.Instance.GetMaxExp())
+        if (exp >= maxExp)
         {
-            exp -= DataManager.Instance.GetMaxExp();
+            exp -= maxExp;
             level++;
         }
         

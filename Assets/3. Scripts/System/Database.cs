@@ -120,4 +120,9 @@ public class Database : MonoBehaviour
                 return 0;
         }
     }
+    
+    public static int GetMaxExp(int level)
+    {
+        return 100 + level * 20;
+    }
 }

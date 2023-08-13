@@ -6,51 +6,56 @@ using UnityEngine.UI;
 
 public class PrincessClearWindow : BaseWindow
 {
-    public List<GameObject> starObjects;
+    public List<Image> starImages;
     public GameObject returnButtonObject;
     public Slider expSlider;
     public TextMeshProUGUI expText;
 
     private IEnumerator Start()
     {
-        Init();
-        
-        yield return new WaitForSeconds(1f);
+        returnButtonObject.SetActive(false);
+        SetSlider();
+        DataManager.Instance.SetExp(10);
+
+        var wait = new WaitForSeconds(0.5f);
+
+        yield return wait;
         int aliveCount = PrincessCharacterManager.Instance.GetAliveCount();
         
         for (int i = 0; i < 3; i++)
         {
-            if (i + 3 >= aliveCount)
+            switch (i)
             {
-                starObjects[i].SetActive(true);
-                yield return new WaitForSeconds(1f);
+                case 0: 
+                    starImages[i].color = new Color(starImages[i].color.r, starImages[i].color.g, starImages[i].color.b, 1);
+                    yield return wait;
+                    break;
+                case 1:
+                case 2:
+                    if (i + 3 <= aliveCount)
+                    {
+                        starImages[i].color = new Color(starImages[i].color.r, starImages[i].color.g, starImages[i].color.b, 1);
+                        yield return wait;
+                    }
+                    break;
             }
         }
         
-        // 경험치 획득 연출
-        
-        yield return new WaitForSeconds(1f);
+        SetSlider();
+        yield return wait;
         
         returnButtonObject.SetActive(true);
     }
 
-    private void Init()
+    private void SetSlider()
     {
-        foreach (var star in starObjects)
-        {
-            star.SetActive(true);
-        }
-        returnButtonObject.SetActive(false);
-        
         expSlider.maxValue = DataManager.Instance.GetMaxExp();
         expSlider.value = DataManager.Instance.exp;
         expText.text = $"{DataManager.Instance.exp}/{DataManager.Instance.GetMaxExp()}";
-        
-        // 경험치 획득
     }
 
     public void OnClickReturnButton()
     {
-        // 스테이지 선택 화면으로 돌아가기
+        MenuManager.Instance.MoveScene("LobbyScene");
     }
 }

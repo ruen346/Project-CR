@@ -196,15 +196,15 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5738762937714605629}
-  - {fileID: 6692954059913107573}
   - {fileID: 8104883627722127916}
+  - {fileID: 6692954059913107573}
   - {fileID: 3335669213717962607}
   m_Father: {fileID: 1849298010911079276}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 120}
+  m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 645.98004, y: 252.14368}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5925241913889148679
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 5763948591843647547}
   - component: {fileID: 182685430118637001}
   m_Layer: 0
-  m_Name: Star2
+  m_Name: Star1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,7 +238,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2407222598182475040}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -687,7 +687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -755,10 +755,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8757649655202661207}
-  starObjects:
-  - {fileID: 8797568407134622170}
-  - {fileID: 5925241913889148679}
-  - {fileID: 7297772645929608421}
+  starImages:
+  - {fileID: 182685430118637001}
+  - {fileID: 4685310979147877223}
+  - {fileID: 6187236005915701614}
   returnButtonObject: {fileID: 6924819137314124610}
   expSlider: {fileID: 8847336390863179680}
   expText: {fileID: 5565758109434654809}
@@ -801,7 +801,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -157}
+  m_AnchoredPosition: {x: 0, y: -180}
   m_SizeDelta: {x: 547.177, y: 65.023254}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4054579010880165852
@@ -1040,7 +1040,7 @@ GameObject:
   - component: {fileID: 8402338832407101038}
   - component: {fileID: 4685310979147877223}
   m_Layer: 0
-  m_Name: Star1
+  m_Name: Star2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1059,7 +1059,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2407222598182475040}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1087,7 +1087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1687,7 +1687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6683497176063535658, guid: 9318ade506ad53140b9a23d7728bf9ee, type: 3}
       propertyPath: m_Color.a
-      value: 0.88235295
+      value: 0.9607843
       objectReference: {fileID: 0}
     - target: {fileID: 6683497176063535658, guid: 9318ade506ad53140b9a23d7728bf9ee, type: 3}
       propertyPath: m_Color.b

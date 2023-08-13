@@ -43,13 +43,16 @@ public class PrincessManager : Singleton<PrincessManager>
 
     public void ClearStage()
     {
-        isPlay = false;
-        StartCoroutine(OpenClearWindow());
+        if (isPlay)
+        {
+            isPlay = false;
+            StartCoroutine(OpenClearWindow());
+        }
     }
 
     private IEnumerator OpenClearWindow()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         
         MenuManager.Instance.OpenWindow("PrincessClearWindow");
     }
