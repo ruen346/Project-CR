@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class PrincessManager : Singleton<PrincessManager>
 {
     public Image autoButtonImage;
+    public Image speed2xButtonImage;
     
     public bool isPlay { get; private set; } = true;
     public bool isAuto { get; private set; }
+    
+    private bool isSpeed2x;
     
     public void BossAttack(int damage, int targetCount)
     {
@@ -50,7 +53,7 @@ public class PrincessManager : Singleton<PrincessManager>
     {
         if (isPlay)
         {
-            isPlay = false;
+            SetEndStage();
             StartCoroutine(OpenClearWindow());
         }
     }
@@ -66,7 +69,7 @@ public class PrincessManager : Singleton<PrincessManager>
     {
         if (isPlay)
         {
-            isPlay = false;
+            SetEndStage();
             StartCoroutine(OpenFailWindow());
         }
     }
@@ -77,11 +80,25 @@ public class PrincessManager : Singleton<PrincessManager>
         
         MenuManager.Instance.OpenWindow("PrincessFailWindow");
     }
+
+    private void SetEndStage()
+    {
+        isPlay = false;
+        Time.timeScale = 1f;
+    }
     
     public void OnClickAutoButton()
     {
         isAuto = !isAuto;
 
         autoButtonImage.color = isAuto ? Color.white : Color.gray;
+    }
+    
+    public void OnClickSpeed2xButton()
+    {
+        isSpeed2x = !isSpeed2x;
+        Time.timeScale = isSpeed2x ? 2f : 1f;
+
+        speed2xButtonImage.color = isSpeed2x ? Color.white : Color.gray;
     }
 }
