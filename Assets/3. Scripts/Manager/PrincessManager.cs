@@ -59,7 +59,17 @@ public class PrincessManager : Singleton<PrincessManager>
 
     public void FailStage()
     {
-        isPlay = false;
-        // todo : 결과창 출력
+        if (isPlay)
+        {
+            isPlay = false;
+            StartCoroutine(OpenFailWindow());
+        }
+    }
+    
+    private IEnumerator OpenFailWindow()
+    {
+        yield return new WaitForSeconds(2f);
+        
+        MenuManager.Instance.OpenWindow("PrincessFailWindow");
     }
 }
