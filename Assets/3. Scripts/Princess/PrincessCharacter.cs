@@ -8,7 +8,19 @@ public class PrincessCharacter : MonoBehaviour
     private const int BACK_CHARACTER_POSITION = 10;
     
     public int hp;
-    public int mp;
+    private int Mp;
+    public int mp
+    {
+        get => Mp;
+        private set
+        {
+            Mp = value;
+            if (PrincessManager.Instance.isAuto)
+            {
+                OnSkill();
+            }
+        }
+    }
     public int maxHp;
     public int maxMp = 100;
 

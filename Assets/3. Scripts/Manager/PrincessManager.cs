@@ -1,10 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PrincessManager : Singleton<PrincessManager>
 {
-    public bool isPlay = true;
+    public Image autoButtonImage;
+    
+    public bool isPlay { get; private set; } = true;
+    public bool isAuto { get; private set; }
     
     public void BossAttack(int damage, int targetCount)
     {
@@ -71,5 +76,12 @@ public class PrincessManager : Singleton<PrincessManager>
         yield return new WaitForSeconds(2f);
         
         MenuManager.Instance.OpenWindow("PrincessFailWindow");
+    }
+    
+    public void OnClickAutoButton()
+    {
+        isAuto = !isAuto;
+
+        autoButtonImage.color = isAuto ? Color.white : Color.gray;
     }
 }
