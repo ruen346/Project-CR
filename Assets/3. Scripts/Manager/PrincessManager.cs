@@ -86,6 +86,12 @@ public class PrincessManager : Singleton<PrincessManager>
         isPlay = false;
         Time.timeScale = 1f;
     }
+
+    public void OnClickPauseButton()
+    {
+        var window = MenuManager.Instance.OpenWindow("PauseWindow");
+        window.GetComponent<PauseWindow>().Init("프린세스 스테이지");
+    }
     
     public void OnClickAutoButton()
     {
