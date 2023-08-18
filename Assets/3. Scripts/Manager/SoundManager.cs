@@ -7,6 +7,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     private Dictionary<string, AudioClip> soundAudioClips = new Dictionary<string, AudioClip>();
 
     private AudioSource bgmAudioSource;
+    private List<AudioSource> soundAudioSources = new List<AudioSource>();
     
     public enum Bgm
     {
@@ -15,7 +16,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     
     public enum Sound
     {
-        TouchButton
+        Clear
     }
 
     public void PlayBgm(Bgm bgm)
@@ -39,8 +40,42 @@ public class SoundManager : MonoSingleton<SoundManager>
         bgmAudioSource.Play();
     }
 
-    public void PlaySound()
+    public void PlaySound(Sound sound, float volume = 1f)
     {
+        var source = GetEmptySource();
         
+        if (source == null)
+        {
+            source = gameObject.AddComponent<AudioSource>();
+            soundAudioSources.Add(source);
+        }
+        
+        string soundString = sound.ToString();
+        
+        if(!soundAudioClips.ContainsKey(soundString))
+        {
+            var audio = Resources.Load<AudioClip>($"Sound/Sound/{soundString}");
+            soundAudioClips.Add(soundString, audio);
+        }
+
+        source.clip = soundAudioClips[soundString];
+        source.volume = volume;
+        source.Play();
+    }
+
+    private AudioSource GetEmptySource()
+    {
+        foreach (var source in soundAudioSources)
+        {
+            if (!source.isPlaying)
+            {
+                return source;
+            }
+        }
+        
+        var newSource = gameObject.AddComponent<AudioSource>();
+        soundAudioSources.Add(newSource);
+        
+        return newSource;
     }
 }

@@ -16,6 +16,7 @@ public class PrincessClearWindow : BaseWindow
         returnButtonObject.SetActive(false);
         SetSlider();
         DataManager.Instance.SetExp(10);
+        SoundManager.Instance.PlaySound(SoundManager.Sound.Clear, 0.3f);
 
         var wait = new WaitForSeconds(0.5f);
 
