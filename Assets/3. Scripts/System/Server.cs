@@ -68,6 +68,19 @@ public class Server : MonoBehaviour
         
         return JsonUtility.ToJson(userData);
     }
+    
+    public static string GetBossData()
+    {
+        var userData = new BossData
+        {
+            name = PlayerPrefs.GetString("bossName", "어둠의 암살자"),
+            level = PlayerPrefs.GetInt("bossLevel", 30),
+            hp = PlayerPrefs.GetInt("bossHp", 100000),
+            damage = PlayerPrefs.GetInt("bossDamage", 100)
+        };
+        
+        return JsonUtility.ToJson(userData);
+    }
 }
 
 

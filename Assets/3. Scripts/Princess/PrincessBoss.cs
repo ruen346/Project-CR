@@ -6,15 +6,25 @@ public class PrincessBoss : Singleton<PrincessBoss>
 {
     private const float MOVE_START_TIME = 1.3f;
     
-    public int maxHp = 100000;
-    public int hp = 100000;
-    public int level = 30;
-    public int damage = 100;
+    public int maxHp;
+    public int hp;
+    public int level;
+    public int damage;
+    public string name;
 
     public Animator animator;
     public SpriteRenderer sprite;
     public Slider hpSlider;
     public GameObject skillObject;
+
+    private void Awake()
+    {
+        maxHp = GameSystem.Instance.princessBossData.hp;
+        level = GameSystem.Instance.princessBossData.level;
+        damage = GameSystem.Instance.princessBossData.damage;
+        name = GameSystem.Instance.princessBossData.name;
+        hp = maxHp;
+    }
 
     private void Start()
     {

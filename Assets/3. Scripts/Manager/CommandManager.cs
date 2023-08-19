@@ -13,6 +13,7 @@ public class CommandManager : MonoSingleton<CommandManager>
             case "GetUserData.php": return Server.GetUserData();
             case "GetCharacterData.php": return Server.GetCharacterData();
             case "SetExp.php": return Server.SetExp(resultList[0]);
+            case "PrincessStart.php": return Server.GetBossData();
             default: return null;
         }
     }

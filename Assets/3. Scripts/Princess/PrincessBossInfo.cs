@@ -11,7 +11,7 @@ public class PrincessBossInfo : MonoBehaviour
 
     private void Start()
     {
-        nameText.text = $"어둠의 암살자 Lv.{boss.level}";
+        nameText.text = $"{boss.name} Lv.{boss.level}";
         hpSlider.maxValue = boss.maxHp;
     }
 

@@ -9,8 +9,8 @@ public class GameSystem : MonoBehaviour
     
     public GameObject damageObject;
 
-    [HideInInspector] 
-    public List<CharacterInfoData> characterInfoDatas;
+    [HideInInspector] public List<CharacterInfoData> characterInfoDatas;
+    [HideInInspector] public BossData princessBossData;
 
     private void Awake()
     {
@@ -31,6 +31,14 @@ public class GameSystem : MonoBehaviour
     public void SetPrincessCharacter(List<CharacterInfoData> datas)
     {
         characterInfoDatas = datas.OrderBy(data => data.position).ToList();
+        StartPrincessGame();
+    }
+
+    private void StartPrincessGame()
+    {
+        var jsonData = CommandManager.Instance.AddCommand("PrincessStart.php");
+        princessBossData = JsonUtility.FromJson<BossData>(jsonData);
+        
         MenuManager.Instance.MoveScene("PrincessScene");
     }
 }
