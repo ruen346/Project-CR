@@ -10,24 +10,29 @@ public class Database : MonoBehaviour
     
     public static int IsDefaultCharacter(int id)
     {
-        return id <= 6 ? 1 : 0;
+        switch (id)
+        {
+            case 2:
+            case 6:
+            case 9: return 0;
+            default: return 1;
+        }
     }
     
     public static string GetCharacterName(int id)
     {
-        // 추후 이름 수정
         switch (id)
         {
-            case 1: return "캐릭터1";
-            case 2: return "캐릭터2";
-            case 3: return "캐릭터3";
-            case 4: return "캐릭터4";
-            case 5: return "캐릭터5";
-            case 6: return "캐릭터6";
-            case 7: return "캐릭터7";
-            case 8: return "캐릭터8";
-            case 9: return "캐릭터9";
-            case 10: return "캐릭터10";
+            case 1: return "프레아";
+            case 2: return "카난";
+            case 3: return "아논";
+            case 4: return "시즈루";
+            case 5: return "이즈나";
+            case 6: return "플레어";
+            case 7: return "메리";
+            case 8: return "라미";
+            case 9: return "티아나";
+            case 10: return "코토";
             default: return "";
         }
     }
@@ -38,16 +43,16 @@ public class Database : MonoBehaviour
         {
             case 1: 
             case 2: 
-            case 3: 
-            case 4: 
             case 5: 
-                return 1;
             case 6: 
-            case 7: 
-            case 8:
-                return 2;
             case 9: 
+                return 1;
+            case 3: 
+            case 7: 
             case 10:
+                return 2;
+            case 4: 
+            case 8:
                 return 3;
             default: 
                 return 0;
@@ -63,14 +68,15 @@ public class Database : MonoBehaviour
             case 2: 
             case 3: 
             case 4: 
-            case 5: 
-                return 1000;
+                return 600;
+            case 5:
             case 6: 
             case 7: 
             case 8:
+                return 1000;
             case 9: 
             case 10:
-                return 900;
+                return 400;
             default: 
                 return 0;
         }
@@ -78,21 +84,21 @@ public class Database : MonoBehaviour
     
     public static int GetCharacterHp(int id)
     {
-        // 추후 값 밸렁싱 수정
         switch (id)
         {
             case 1: 
             case 2: 
-            case 3: 
+            case 3:
             case 4: 
-            case 5: 
-                return 1000;
+                return 2000;
+            case 5:
             case 6: 
             case 7: 
             case 8:
+                return 1000;
             case 9: 
             case 10:
-                return 900;
+                return 800;
             default: 
                 return 0;
         }
@@ -100,14 +106,13 @@ public class Database : MonoBehaviour
     
     public static int GetCharacterPosition(int id)
     {
-        // 추후 값 밸렁싱 수정
         switch (id)
         {
             case 1: 
             case 2: 
-            case 3: 
-                return 0;
+            case 3:
             case 4: 
+                return 0;
             case 5:
             case 6: 
             case 7: 
