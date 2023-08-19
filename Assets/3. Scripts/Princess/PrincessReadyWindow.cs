@@ -21,7 +21,7 @@ public class PrincessReadyWindow : BaseWindow
         {
             if (!data.isGet)
             {
-                break;
+                continue;
             }
             
             var character = Instantiate(characterIcon, iconContent.transform);
