@@ -1,21 +1,33 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class CommandManager : MonoSingleton<CommandManager>
 {
-    public string AddCommand(string command, string data = "")
+    public delegate void CommandDelegate(int result, string data);
+    
+    public void AddCommand(string command, string data, CommandDelegate callback)
     {
         var resultList = SplitStringByDot(data);
+        var responseData = "";
         
         switch (command)
         {
-            case "GetUserData.php": return Server.GetUserData();
-            case "GetCharacterData.php": return Server.GetCharacterData();
-            case "SetExp.php": return Server.SetExp(resultList[0]);
-            case "PrincessStart.php": return Server.GetBossData();
-            default: return null;
+            case "GetUserData.php": 
+                responseData = Server.GetUserData();
+                break;
+            case "GetCharacterData.php": 
+                responseData = Server.GetCharacterData();
+                break;
+            case "SetExp.php": 
+                responseData = Server.SetExp(resultList[0]);
+                break;
+            case "PrincessStart.php": 
+                responseData = Server.GetBossData();
+                break;
         }
+
+        // 실제 통신시 에러 발생시 1이 아닌 값 전송
+        callback(1, responseData);
     }
 
     private static List<string> SplitStringByDot(string input)

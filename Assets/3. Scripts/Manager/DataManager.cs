@@ -19,32 +19,53 @@ public class DataManager : MonoSingleton<DataManager>
 
     private void GetUserData()
     {
-        var jsonData = CommandManager.Instance.AddCommand("GetUserData.php");
-        var userData = JsonUtility.FromJson<UserData>(jsonData);
-
-        userName = userData.userName;
-        level = userData.level;
-        exp = userData.exp;
-        energy = userData.energy;
-        gold = userData.gold;
-        dia = userData.dia;
+        CommandManager.Instance.AddCommand("GetUserData.php", "", ResponseUserData);
     }
+    
+    private void ResponseUserData(int result, string data)
+    {
+        if (result == 1)
+        {
+            var userData = JsonUtility.FromJson<UserData>(data);
+
+            userName = userData.userName;
+            level = userData.level;
+            exp = userData.exp;
+            energy = userData.energy;
+            gold = userData.gold;
+            dia = userData.dia;
+        }
+    } 
     
     private void GetCharacterData()
     {
-        var jsonData = CommandManager.Instance.AddCommand("GetCharacterData.php");
-        characterData = JsonUtility.FromJson<CharacterData>(jsonData);
+        CommandManager.Instance.AddCommand("GetCharacterData.php", "", ResponseCharacterData);
     }
+    
+    private void ResponseCharacterData(int result, string data)
+    {
+        if (result == 1)
+        {
+            characterData = JsonUtility.FromJson<CharacterData>(data);
+        }
+    } 
     
     public void SetExp(int value)
     {
         string data = $"{value.ToString()}";
-        var jsonData = CommandManager.Instance.AddCommand("SetExp.php", data);
-        var userData = JsonUtility.FromJson<UserData>(jsonData);
-
-        level = userData.level;
-        exp = userData.exp;
+        CommandManager.Instance.AddCommand("SetExp.php", data, ResponseExpData);
     }
+    
+    private void ResponseExpData(int result, string data)
+    {
+        if (result == 1)
+        {
+            var userData = JsonUtility.FromJson<UserData>(data);
+
+            level = userData.level;
+            exp = userData.exp;
+        }
+    } 
     
     public int GetMaxExp()
     {

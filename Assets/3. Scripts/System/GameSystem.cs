@@ -36,9 +36,15 @@ public class GameSystem : MonoBehaviour
 
     private void StartPrincessGame()
     {
-        var jsonData = CommandManager.Instance.AddCommand("PrincessStart.php");
-        princessBossData = JsonUtility.FromJson<BossData>(jsonData);
-        
-        MenuManager.Instance.MoveScene("PrincessScene");
+        CommandManager.Instance.AddCommand("PrincessStart.php", "", ResponseData);
+    }
+
+    private void ResponseData(int result, string data)
+    {
+        if (result == 1)
+        {
+            princessBossData = JsonUtility.FromJson<BossData>(data);
+            MenuManager.Instance.MoveScene("PrincessScene");
+        }
     }
 }
