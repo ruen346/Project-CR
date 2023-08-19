@@ -651,7 +651,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 18dd0dc67345ef74fba81f3134961b82, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -785,7 +785,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 18dd0dc67345ef74fba81f3134961b82, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2379,7 +2379,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 18dd0dc67345ef74fba81f3134961b82, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3495,7 +3495,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 18dd0dc67345ef74fba81f3134961b82, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5041,7 +5041,6 @@ GameObject:
   - component: {fileID: 1759761786}
   - component: {fileID: 1759761787}
   - component: {fileID: 1759761789}
-  - component: {fileID: 1759761788}
   m_Layer: 5
   m_Name: CharacterGroup
   m_TagString: Untagged
@@ -5082,24 +5081,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759761785}
   m_CullTransparentMesh: 1
---- !u!114 &1759761788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1759761785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a4c671819b8dd04e89bd360b69cc4f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterIcons:
-  - {fileID: 8429487755719605915}
-  - {fileID: 1577756546}
-  - {fileID: 998790626}
-  - {fileID: 595619083}
-  - {fileID: 1958004900}
 --- !u!114 &1759761789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6902,6 +6883,7 @@ MonoBehaviour:
   hp: 100000
   level: 30
   damage: 100
+  name: 
   animator: {fileID: 937983883792006312}
   sprite: {fileID: 937983883792006315}
   hpSlider: {fileID: 2450363404197330609}
@@ -7895,7 +7877,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 18dd0dc67345ef74fba81f3134961b82, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

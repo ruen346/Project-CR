@@ -169,6 +169,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageObject: {fileID: 632974447613161311, guid: add9667f95b6bcf4390fbc171f6be0ee, type: 3}
   characterInfoDatas: []
+  princessBossData:
+    hp: 0
+    level: 0
+    damage: 0
+    name: 
 --- !u!1 &130745296
 GameObject:
   m_ObjectHideFlags: 0
