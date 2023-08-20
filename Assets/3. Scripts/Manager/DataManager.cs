@@ -71,6 +71,11 @@ public class DataManager : MonoSingleton<DataManager>
         return 100 + level * 20;
     }
 
+    public void SetEnergy(int energyValue)
+    {
+        energy = energyValue;
+    }
+
     public void SetPrincessClearData(UserData userData)
     {
         level = userData.level;

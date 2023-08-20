@@ -43,7 +43,10 @@ public class GameSystem : MonoBehaviour
     {
         if (result == 1)
         {
-            princessBossData = JsonUtility.FromJson<BossData>(data);
+            var jsonData = JsonUtility.FromJson<PrincessStartData>(data);
+            princessBossData = jsonData.bossData;
+            DataManager.Instance.SetEnergy(jsonData.userData.energy);
+            
             MenuManager.Instance.MoveScene("PrincessScene");
         }
     }

@@ -73,15 +73,29 @@ public class Server : MonoBehaviour
     
     public static string PrincessStart()
     {
-        var userData = new BossData
+        int energy = PlayerPrefs.GetInt("energy", 100) - 10;
+        PlayerPrefs.SetInt("energy", energy);
+        
+        var userData = new UserData
+        {
+            energy = energy
+        };
+        
+        var bossData = new BossData
         {
             name = PlayerPrefs.GetString("bossName", "어둠의 암살자"),
             level = PlayerPrefs.GetInt("bossLevel", 30),
             hp = PlayerPrefs.GetInt("bossHp", 100000),
             damage = PlayerPrefs.GetInt("bossDamage", 100)
         };
+
+        var princessStartData = new PrincessStartData
+        {
+            userData = userData,
+            bossData = bossData
+        };
         
-        return JsonUtility.ToJson(userData);
+        return JsonUtility.ToJson(princessStartData);
     }
     
     public static string PrincessClear()

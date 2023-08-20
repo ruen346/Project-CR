@@ -31,14 +31,18 @@ public class PrincessReadyWindow : BaseWindow
 
     public void OnClickStartButton()
     {
-        if (IsAllCharacterSetting())
+        if (!IsAllCharacterSetting())
         {
-            var characters = readyCharacterIcons.Select(character => character.characterInfoData).ToList();
-            GameSystem.Instance.SetPrincessCharacter(characters);
+            MenuManager.Instance.OpenMessageWindow("편성 오류", "5명의 캐릭터가 모두 편성되지 않았습니다.", true);
+        }
+        else if (DataManager.Instance.energy < 10)
+        {
+            MenuManager.Instance.OpenMessageWindow("에너지 부족", "게임 시작을 위한 에너지가 부족합니다.", false);
         }
         else
         {
-            MenuManager.Instance.OpenMessageWindow("편성 오류", "5명의 캐릭터가 모두 편성되지 않았습니다.", true);
+            var characters = readyCharacterIcons.Select(character => character.characterInfoData).ToList();
+            GameSystem.Instance.SetPrincessCharacter(characters);
         }
     }
 

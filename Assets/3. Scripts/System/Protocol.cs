@@ -41,6 +41,13 @@ public class BossData
 }
 
 [System.Serializable]
+public class PrincessStartData
+{
+    public UserData userData;
+    public BossData bossData;
+}
+
+[System.Serializable]
 public class PrincessClearData
 {
     public UserData userData;
