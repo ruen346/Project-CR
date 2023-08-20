@@ -77,4 +77,21 @@ public class DataManager : MonoSingleton<DataManager>
         exp = userData.exp;
         gold = userData.gold;
     }
+
+    public void SetCharacterData(CharacterUpgradeData data)
+    {
+        foreach (var characterInfo in characterData.CharacterInfoDatas)
+        {
+            if (characterInfo.id == data.characterInfoData.id)
+            {
+                characterInfo.level = data.characterInfoData.level;
+                characterInfo.damage = data.characterInfoData.damage;
+                characterInfo.hp = data.characterInfoData.hp;
+                
+                break;
+            }
+        }
+
+        gold = data.userData.gold;
+    }
 }

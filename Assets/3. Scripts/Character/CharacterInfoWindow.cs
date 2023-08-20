@@ -45,6 +45,25 @@ public class CharacterInfoWindow : BaseWindow
 
     public void OnClickUpgradeButton()
     {
-        
+        if (DataManager.Instance.gold >= 1000)
+        {
+            CommandManager.Instance.AddCommand("UpgradeCharacter.php", characterData.id.ToString(), ResponseUpgradeData);
+        }
+        else
+        {
+            MenuManager.Instance.OpenMessageWindow("골드 부족", "캐릭터 업그레이드에 필요한 골드가 부족합니다.", true);
+        }
+    }
+
+    private void ResponseUpgradeData(int result, string data)
+    {
+        if (result == 1)
+        {
+            var characterUpgradeData = JsonUtility.FromJson<CharacterUpgradeData>(data);
+            DataManager.Instance.SetCharacterData(characterUpgradeData);
+            
+            SetTexts();
+            CharacterWindow.instance.UpdateData();
+        }
     }
 }

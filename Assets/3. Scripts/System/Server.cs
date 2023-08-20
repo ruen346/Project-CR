@@ -25,16 +25,18 @@ public class Server : MonoBehaviour
 
         for (int i = 1; i <= Database.MAX_CHARACTER_COUNT; i++)
         {
+            int level = PlayerPrefs.GetInt($"characterLevel_{i}", 1);
+            
             var data = new CharacterInfoData
             {
                 id = i,
                 isGet = PlayerPrefs.GetInt($"characterIsGet_{i}", Database.IsDefaultCharacter(i)) == 1,
                 name = Database.GetCharacterName(i),
-                level = PlayerPrefs.GetInt($"characterlevel_{i}", 1),
+                level = level,
                 star = PlayerPrefs.GetInt($"characterStar_{i}", Database.IsCharacterStar(i)),
-                damage =  Database.GetCharacterDamage(i),
-                hp =  Database.GetCharacterHp(i),
-                position =  Database.GetCharacterPosition(i)
+                damage = Database.GetCharacterDamage(i) * level,
+                hp = Database.GetCharacterHp(i) * level,
+                position = Database.GetCharacterPosition(i)
             };
             
             characterInfoData.Add(data);
@@ -117,6 +119,38 @@ public class Server : MonoBehaviour
         };
         
         return JsonUtility.ToJson(princessClearData);
+    }
+    
+    public static string UpgradeCharacter(string id)
+    {
+        int intId = int.Parse(id);
+        int gold = PlayerPrefs.GetInt("gold", 0) - 1000; 
+        int level = PlayerPrefs.GetInt($"characterLevel_{id}", 1);
+        level++;
+        
+        PlayerPrefs.SetInt($"characterLevel_{id}", level);
+        PlayerPrefs.SetInt("gold", gold);
+        
+        var characterInfoData = new CharacterInfoData
+        {
+            id = intId,
+            level = level,
+            damage = Database.GetCharacterDamage(intId) * level,
+            hp = Database.GetCharacterHp(intId) * level,
+        };
+        
+        var userData = new UserData
+        {
+            gold = gold
+        };
+        
+        var characterUpgradeData = new CharacterUpgradeData
+        {
+            characterInfoData = characterInfoData,
+            userData = userData
+        };
+        
+        return JsonUtility.ToJson(characterUpgradeData);
     }
 }
 

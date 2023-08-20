@@ -33,16 +33,13 @@ public class CharacterIcon : MonoBehaviour
         }
     }
 
-    private void SetText()
+    public void SetText()
     {
         levelText.text = $"Lv.{characterInfoData.level.ToString()}";
         starText.text = characterInfoData.star.ToString();
         nameText.text = characterInfoData.name;
     }
     
-    /// <summary>
-    /// 뽑은거만 보이고 눌리도록 수정 필요
-    /// </summary>
     public void OnClickIcon()
     {
         var window = MenuManager.Instance.OpenWindow("CharacterInfoWindow");

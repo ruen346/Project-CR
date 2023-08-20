@@ -47,3 +47,10 @@ public class PrincessClearData
     public int getGold;
     public int getExp;
 }
+
+[System.Serializable]
+public class CharacterUpgradeData
+{
+    public CharacterInfoData characterInfoData;
+    public UserData userData;
+}

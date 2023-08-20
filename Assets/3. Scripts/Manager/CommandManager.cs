@@ -27,6 +27,9 @@ public class CommandManager : MonoSingleton<CommandManager>
             case "PrincessClear.php": 
                 responseData = Server.PrincessClear();
                 break;
+            case "UpgradeCharacter.php": 
+                responseData = Server.UpgradeCharacter(resultList[0]);
+                break;
         }
 
         // 실제 통신시 에러 발생시 1이 아닌 값 전송
