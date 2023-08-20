@@ -66,4 +66,10 @@ public class CharacterInfoWindow : BaseWindow
             CharacterWindow.instance.UpdateData();
         }
     }
+
+    public void OnClickBackgroundButton()
+    {
+        PlayerPrefs.SetInt("background", characterData.id);
+        BackgroundManager.Instance.SetBackground(characterData.id);
+    }
 }
