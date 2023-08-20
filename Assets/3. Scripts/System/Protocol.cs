@@ -39,3 +39,11 @@ public class BossData
     public int damage;
     public string name;
 }
+
+[System.Serializable]
+public class PrincessClearData
+{
+    public UserData userData;
+    public int getGold;
+    public int getExp;
+}

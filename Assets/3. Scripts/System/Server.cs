@@ -69,7 +69,7 @@ public class Server : MonoBehaviour
         return JsonUtility.ToJson(userData);
     }
     
-    public static string GetBossData()
+    public static string PrincessStart()
     {
         var userData = new BossData
         {
@@ -80,6 +80,43 @@ public class Server : MonoBehaviour
         };
         
         return JsonUtility.ToJson(userData);
+    }
+    
+    public static string PrincessClear()
+    {
+        const int getExp = 10;
+        const int getGold = 1000;
+        
+        int level = PlayerPrefs.GetInt("level", 1);
+        int exp = PlayerPrefs.GetInt("exp", 0) + getExp;
+        int maxExp = Database.GetMaxExp(level);
+        int gold = PlayerPrefs.GetInt("gold", 0) + getGold;
+
+        if (exp >= maxExp)
+        {
+            exp -= maxExp;
+            level++;
+        }
+        
+        PlayerPrefs.SetInt("level", level);
+        PlayerPrefs.SetInt("exp", exp);
+        PlayerPrefs.SetInt("gold", gold);
+        
+        var userData = new UserData
+        {
+            level = level,
+            exp = exp,
+            gold = gold
+        };
+
+        var princessClearData = new PrincessClearData
+        {
+            userData = userData,
+            getExp = getExp,
+            getGold = getGold
+        };
+        
+        return JsonUtility.ToJson(princessClearData);
     }
 }
 

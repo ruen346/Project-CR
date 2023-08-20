@@ -61,7 +61,6 @@ public class DataManager : MonoSingleton<DataManager>
         if (result == 1)
         {
             var userData = JsonUtility.FromJson<UserData>(data);
-
             level = userData.level;
             exp = userData.exp;
         }
@@ -70,5 +69,12 @@ public class DataManager : MonoSingleton<DataManager>
     public int GetMaxExp()
     {
         return 100 + level * 20;
+    }
+
+    public void SetPrincessClearData(UserData userData)
+    {
+        level = userData.level;
+        exp = userData.exp;
+        gold = userData.gold;
     }
 }

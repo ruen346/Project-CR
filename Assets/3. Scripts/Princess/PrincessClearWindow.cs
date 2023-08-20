@@ -10,14 +10,19 @@ public class PrincessClearWindow : BaseWindow
     public GameObject returnButtonObject;
     public Slider expSlider;
     public TextMeshProUGUI expText;
+    public TextMeshProUGUI goldText;
 
-    private IEnumerator Start()
+    public void Init(int getExp, int getGold)
     {
         returnButtonObject.SetActive(false);
-        SetSlider();
-        DataManager.Instance.SetExp(10);
+        SetSlider(DataManager.Instance.exp - getExp);
         SoundManager.Instance.PlaySound(SoundManager.Sound.Clear, 0.3f);
 
+        StartCoroutine(DoViewWindow(getGold));
+    }
+
+    private IEnumerator DoViewWindow(int getGold)
+    {
         var wait = new WaitForSeconds(0.5f);
 
         yield return wait;
@@ -42,16 +47,17 @@ public class PrincessClearWindow : BaseWindow
             }
         }
         
-        SetSlider();
+        SetSlider(DataManager.Instance.exp);
+        goldText.text = $"+{getGold}G";
         yield return wait;
         
         returnButtonObject.SetActive(true);
     }
 
-    private void SetSlider()
+    private void SetSlider(int exp)
     {
         expSlider.maxValue = DataManager.Instance.GetMaxExp();
-        expSlider.value = DataManager.Instance.exp;
+        expSlider.value = exp;
         expText.text = $"{DataManager.Instance.exp}/{DataManager.Instance.GetMaxExp()}";
     }
 

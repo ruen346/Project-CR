@@ -61,8 +61,19 @@ public class PrincessManager : Singleton<PrincessManager>
     private IEnumerator OpenClearWindow()
     {
         yield return new WaitForSeconds(2f);
-        
-        MenuManager.Instance.OpenWindow("PrincessClearWindow");
+        CommandManager.Instance.AddCommand("PrincessClear.php", "", ResponseClearData);
+    }
+
+    private void ResponseClearData(int result, string data)
+    {
+        if (result == 1)
+        {
+            var princessClearData = JsonUtility.FromJson<PrincessClearData>(data);
+            DataManager.Instance.SetPrincessClearData(princessClearData.userData);
+
+            var window = MenuManager.Instance.OpenWindow("PrincessClearWindow");
+            window.GetComponent<PrincessClearWindow>().Init(princessClearData.getExp, princessClearData.getGold);
+        }
     }
 
     public void FailStage()

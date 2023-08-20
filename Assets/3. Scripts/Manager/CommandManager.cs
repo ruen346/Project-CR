@@ -22,7 +22,10 @@ public class CommandManager : MonoSingleton<CommandManager>
                 responseData = Server.SetExp(resultList[0]);
                 break;
             case "PrincessStart.php": 
-                responseData = Server.GetBossData();
+                responseData = Server.PrincessStart();
+                break;
+            case "PrincessClear.php": 
+                responseData = Server.PrincessClear();
                 break;
         }
 
