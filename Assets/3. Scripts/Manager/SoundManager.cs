@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoSingleton<SoundManager>
+public class SoundManager : DontDestroySingleton<SoundManager>
 {
     private Dictionary<string, AudioClip> bgmAudioClips = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> soundAudioClips = new Dictionary<string, AudioClip>();

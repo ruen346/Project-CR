@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-public class CommandManager : MonoSingleton<CommandManager>
+public class CommandManager : DontDestroySingleton<CommandManager>
 {
     public delegate void CommandDelegate(int result, string data);
     

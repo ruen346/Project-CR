@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoSingleton<MenuManager>
+public class MenuManager : DontDestroySingleton<MenuManager>
 {
     private GameObject canvas;
     private GameObject topCanvas;

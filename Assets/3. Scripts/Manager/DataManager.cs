@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DataManager : MonoSingleton<DataManager>
+public class DataManager : DontDestroySingleton<DataManager>
 {
     public string userName { get; private set; }
     public int level { get; private set; }

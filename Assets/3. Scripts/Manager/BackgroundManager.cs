@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BackgroundManager : MonoSingleton<BackgroundManager>
+public class BackgroundManager : DontDestroySingleton<BackgroundManager>
 {
     public Image image;
     public GameObject dialogObject;
