@@ -14,7 +14,7 @@ public class EventGroup : MonoBehaviour
     
     private void ChangePage(int index)
     {
-        for (int i = 0; i < naviButtons.Count; i++)
+        for (var i = 0; i < naviButtons.Count; i++)
         {
             naviButtons[i].OnActive(index == i);
         }

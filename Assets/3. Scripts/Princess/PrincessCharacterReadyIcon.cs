@@ -6,7 +6,6 @@ public class PrincessCharacterReadyIcon : PrincessCharacterIcon
     
     private void Start()
     {
-        // 연속해서 플레이 가능시 값 받아오도록 수정
         hpSlider.value = 1;
         mpSlider.value = 0;
     }

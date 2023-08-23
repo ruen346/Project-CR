@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class SoundManager : DontDestroySingleton<SoundManager>
 {
-    private Dictionary<string, AudioClip> bgmAudioClips = new Dictionary<string, AudioClip>();
-    private Dictionary<string, AudioClip> soundAudioClips = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> bgmAudioClips = new();
+    private Dictionary<string, AudioClip> soundAudioClips = new();
 
     private AudioSource bgmAudioSource;
-    private List<AudioSource> soundAudioSources = new List<AudioSource>();
+    private List<AudioSource> soundAudioSources = new();
     
     public enum Bgm
     {

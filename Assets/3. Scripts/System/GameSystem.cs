@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -28,9 +27,9 @@ public class GameSystem : MonoBehaviour
         damage.Init(value, color);
     }
 
-    public void SetPrincessCharacter(List<CharacterInfoData> datas)
+    public void SetPrincessCharacter(List<CharacterInfoData> characterInfos)
     {
-        characterInfoDatas = datas.OrderBy(data => data.position).ToList();
+        characterInfoDatas = characterInfos.OrderBy(data => data.position).ToList();
         StartPrincessGame();
     }
 

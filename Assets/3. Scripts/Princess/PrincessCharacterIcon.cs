@@ -10,10 +10,8 @@ public class PrincessCharacterIcon : MonoBehaviour
     public Slider hpSlider;
     public Slider mpSlider;
 
-    [HideInInspector]
-    public CharacterInfoData characterInfoData;
-    [HideInInspector]
-    public bool isSetData;
+    [HideInInspector] public CharacterInfoData characterInfoData;
+    [HideInInspector] public bool isSetData;
 
     public void Init(CharacterInfoData data)
     {

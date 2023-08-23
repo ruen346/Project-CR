@@ -10,7 +10,7 @@ public class BaseWindow : MonoBehaviour
         DestroyWindow();
     }
 
-    public void DestroyWindow()
+    private void DestroyWindow()
     {
         animator.SetTrigger("Close");
         StartCoroutine(CoDestroy());

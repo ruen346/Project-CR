@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +7,7 @@ public class CharacterWindow : BaseWindow
     
     public GameObject characterIcon;
     public GameObject characterParent;
-    public List<CharacterIcon> CharacterIcons;
+    public List<CharacterIcon> characterIcons;
 
     private void Awake()
     {
@@ -23,13 +22,13 @@ public class CharacterWindow : BaseWindow
             var characterData = character.GetComponent<CharacterIcon>();
             characterData.Init(data);
             
-            CharacterIcons.Add(characterData);
+            characterIcons.Add(characterData);
         }
     }
 
     public void UpdateData()
     {
-        foreach (var character in CharacterIcons)
+        foreach (var character in characterIcons)
         {
             character.SetText();
         }

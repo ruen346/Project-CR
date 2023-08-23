@@ -139,9 +139,8 @@ public class Server : MonoBehaviour
     {
         int intId = int.Parse(id);
         int gold = PlayerPrefs.GetInt("gold", 0) - 1000; 
-        int level = PlayerPrefs.GetInt($"characterLevel_{id}", 1);
-        level++;
-        
+        int level = PlayerPrefs.GetInt($"characterLevel_{id}", 1) + 1;
+
         PlayerPrefs.SetInt($"characterLevel_{id}", level);
         PlayerPrefs.SetInt("gold", gold);
         

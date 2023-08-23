@@ -16,8 +16,10 @@ public class MenuManager : DontDestroySingleton<MenuManager>
         {
             topCanvas = GameObject.Find("TopCanvas");
         }
-        
-        var window = Instantiate(Resources.Load($"Prefab/{name}"), isTopCanvas ? topCanvas.transform : canvas.transform) as GameObject;
+
+        var window =
+            Instantiate(Resources.Load($"Prefab/{name}"),
+                isTopCanvas ? topCanvas.transform : canvas.transform) as GameObject;
         return window;
     }
 

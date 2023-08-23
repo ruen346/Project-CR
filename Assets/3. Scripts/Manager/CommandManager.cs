@@ -38,7 +38,7 @@ public class CommandManager : DontDestroySingleton<CommandManager>
 
     private static List<string> SplitStringByDot(string input)
     {
-        string[] splitArray = input.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+        string[] splitArray = input.Split(new [] { ',' }, StringSplitOptions.RemoveEmptyEntries);
         var resultList = new List<string>();
 
         foreach (string item in splitArray)
